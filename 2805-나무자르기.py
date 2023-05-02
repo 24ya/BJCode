@@ -3,19 +3,15 @@ import sys
 input=sys.stdin.readline
 n,m=map(int,input().split())
 A=list(map(int,input().split()))
-A.sort(reverse=True)
-start,end=0,A[0]
+start,end=0,max(A)
 while start<=end:
     mid=(start+end)//2
     cnt=0
-    for i in range(len(A)):
-        if A[i]>mid:
-            cnt+=A[i]-mid
-        else:
-            break
+    for i in A:
+        if i>mid:
+            cnt+=i-mid
     if cnt>=m:
         start=mid+1
     else:
         end=mid-1
 print(start-1)
-#pypy
